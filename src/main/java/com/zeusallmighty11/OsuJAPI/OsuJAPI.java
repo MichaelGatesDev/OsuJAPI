@@ -18,12 +18,7 @@
 package com.zeusallmighty11.OsuJAPI;
 
 
-import com.zeusallmighty11.OsuJAPI.exception.InvalidKeyException;
-import com.zeusallmighty11.OsuJAPI.exception.UserNotFoundException;
 import com.zeusallmighty11.OsuJAPI.session.CurrentSession;
-import com.zeusallmighty11.OsuJAPI.session.SessionManager;
-import com.zeusallmighty11.OsuJAPI.user.User;
-import com.zeusallmighty11.OsuJAPI.user.UserManager;
 
 
 public class OsuJAPI
@@ -50,35 +45,6 @@ public class OsuJAPI
         this.apiKey = key;
     }
 
-
-
-
-    public static void main(String[] args)
-    {
-        long time1 = System.currentTimeMillis();
-
-        final User[] userArr = new User[1];
-        try
-        {
-            UserManager.getInstance().getUser("ZeusAllMighty11", "b819bbe453e1e42ffcdbe1aaae74b6c7408b83da", o -> userArr[0] = (User) o);
-
-            User user = userArr[0];
-
-            System.out.println("Accuracy: " + user.getAccuracy());
-
-            long now = System.currentTimeMillis();
-
-
-            System.out.println("Time taken: " + (now - time1) + "ms.");
-        }
-        catch (UserNotFoundException | InvalidKeyException e)
-        {
-            e.printStackTrace();
-        }
-
-
-        SessionManager.getInstance().getCurrentSession(o -> System.out.println("Current song: " + o));
-    }
 
 
 
