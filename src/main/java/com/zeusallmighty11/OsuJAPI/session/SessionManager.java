@@ -19,9 +19,7 @@ package com.zeusallmighty11.OsuJAPI.session;
 
 
 import com.zeusallmighty11.OsuJAPI.async.Callback;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import com.zeusallmighty11.OsuJAPI.tools.EnumAllWindowNames;
 
 
 public class SessionManager
@@ -54,30 +52,17 @@ public class SessionManager
             String rawTitle = "";
 
 
-            // read all process names
-            try
-            {
-                String line;
-                Process p = Runtime.getRuntime().exec(System.getenv("windir") + "\\system32\\" + "tasklist.exe");
-                BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
-                while ((line = input.readLine()) != null)
-                {
-                    if (line.toLowerCase().contains("osu"))
-                    {
-                        rawTitle = line;
-                        break;
-                    }
-                }
-                input.close();
-            }
-            catch (Exception err)
-            {
-                err.printStackTrace();
-            }
 
+            for (String s : EnumAllWindowNames.getAllWindowNames())
+            {
+                if (s.toLowerCase().contains("osu"))
+                {
+                    rawTitle = s;
+                }
+            }
 
             // return the title
-            callback.onResponse(rawTitle.toLowerCase().replace(".exe", "").replace("osu", ""));
+            callback.onResponse(rawTitle.replace("osu!  - ", ""));
         }).start();
     }
 
