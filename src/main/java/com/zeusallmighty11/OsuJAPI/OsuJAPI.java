@@ -18,9 +18,7 @@
 package com.zeusallmighty11.OsuJAPI;
 
 
-import com.zeusallmighty11.OsuJAPI.beatmap.BeatmapManager;
 import com.zeusallmighty11.OsuJAPI.session.CurrentSession;
-import com.zeusallmighty11.OsuJAPI.user.UserManager;
 
 
 public class OsuJAPI
@@ -30,8 +28,6 @@ public class OsuJAPI
     private static final String VERSION = "${project.version}";
     private static OsuJAPI instance;
 
-    private UserManager userManager;
-    private BeatmapManager beatmapManager;
     private CurrentSession currentSession;
 
 
@@ -74,28 +70,6 @@ public class OsuJAPI
 
 
     // ============================================================================ \\
-
-
-
-
-    /**
-     * @return UserManager instance
-     */
-    public UserManager getUserManager()
-    {
-        return userManager;
-    }
-
-
-
-
-    /**
-     * @return BeatmapManager instance
-     */
-    public BeatmapManager getBeatmapManager()
-    {
-        return beatmapManager;
-    }
 
 
 
