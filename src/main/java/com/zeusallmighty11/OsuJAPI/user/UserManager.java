@@ -90,7 +90,7 @@ public class UserManager
 
 
             // if the user doesn't exist
-            if (response.contains("[]"))
+            if (response.length() < 10)
             {
                 // throw user not found exception
                 throw new UserNotFoundException(username);
