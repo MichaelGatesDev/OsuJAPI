@@ -62,7 +62,27 @@ public class SessionManager
             }
 
             // return the title
-            callback.onResponse(rawTitle.replace("osu!  - ", ""));
+
+
+            int startArg = 1;
+
+            // if cutting edge build, there is extra thing
+            if (rawTitle.contains("cutting"))
+            {
+                startArg = 2;
+            }
+
+            String[] ss = rawTitle.split(" ");
+            String title = "";
+
+            for (int i = startArg; i < ss.length; i++)
+            {
+                title += ss[i] + " ";
+            }
+
+
+            callback.onResponse(title);
+
         }).start();
     }
 
