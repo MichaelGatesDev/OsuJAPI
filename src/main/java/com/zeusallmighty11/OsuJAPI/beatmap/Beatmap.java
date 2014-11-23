@@ -136,7 +136,7 @@ public class Beatmap
         beatmap.setArtist(json.getString("artist"));
         beatmap.setId(json.getInt("beatmap_id"));
         beatmap.setSetId(json.getInt("beatmapset_id"));
-        beatmap.setBPM(json.getInt("bpm"));
+        beatmap.setBPM((int) json.getDouble("bpm"));
         beatmap.setCreator(json.getString("creator"));
         beatmap.setDifficultyRating(json.getDouble("difficultyrating"));
         beatmap.setCircleSize(json.getInt("diff_size"));
