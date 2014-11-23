@@ -35,7 +35,7 @@ public class BeatmapManager
 
     private static BeatmapManager instance = new BeatmapManager();
 
-    private static final String URL_BEATMAP = "https://osu.ppy.sh/api/get_beatmap";
+    private static final String URL_BEATMAP = "http://osu.ppy.sh/api/get_beatmaps";
 
 
 
@@ -87,8 +87,6 @@ public class BeatmapManager
                 throw new InvalidKeyException(key);
             }
 
-
-
             // if the user doesn't exist
             if (response.contains("[]"))
             {
@@ -96,16 +94,12 @@ public class BeatmapManager
                 throw new BeatmapNotFoundException(id);
             }
 
-
-
             // transform result into object json
             JSONArray array = new JSONArray(response);
             JSONObject json = array.getJSONObject(0);
 
-
             // parse the beatmap
             Beatmap beatmap = Beatmap.parse(json);
-
 
             // respond with the user
             callback.onResponse(beatmap);
