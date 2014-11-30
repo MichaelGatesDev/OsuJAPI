@@ -55,9 +55,12 @@ public class SessionManager
 
             for (String s : EnumAllWindowNames.getAllWindowNames())
             {
-                if (s.toLowerCase().contains("osu") && !s.toLowerCase().contains("broadcaster"))
+                if (s.toLowerCase().startsWith("osu!"))
                 {
-                    rawTitle = s;
+                    if (!s.contains("broadcaster") && !s.contains("firefox") && !s.contains("twitch"))
+                    {
+                        rawTitle = s;
+                    }
                 }
             }
 
