@@ -18,10 +18,8 @@
 package com.zeusallmighty11.OsuJAPI;
 
 
-import com.zeusallmighty11.OsuJAPI.beatmap.BeatmapManager;
-import com.zeusallmighty11.OsuJAPI.exception.BeatmapNotFoundException;
-import com.zeusallmighty11.OsuJAPI.exception.InvalidKeyException;
 import com.zeusallmighty11.OsuJAPI.session.CurrentSession;
+import com.zeusallmighty11.OsuJAPI.session.SessionManager;
 
 
 public class OsuJAPI
@@ -54,16 +52,9 @@ public class OsuJAPI
     // STRICTLY FOR DEBUGGING
     public static void main(String[] args)
     {
-        int id = 49739;
-
-        try
-        {
-            BeatmapManager.getInstance().getBeatmap(id, "7df58e364efef357b8dc935f8d514a5c5af2d1e3", o -> System.out.println("Got it!"));
-        }
-        catch (BeatmapNotFoundException | InvalidKeyException e)
-        {
-            e.printStackTrace();
-        }
+        SessionManager.getInstance().getCurrentSession(o -> {
+            System.out.println(o);
+        });
     }
 
 

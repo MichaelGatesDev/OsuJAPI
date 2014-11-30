@@ -67,12 +67,13 @@ public class SessionManager
             // return the title
 
 
-            int startArg = 1;
+            int startArg = 3;
 
             // if cutting edge build, there is extra thing
             if (rawTitle.contains("cutting"))
             {
-                startArg = 2;
+                // not sure
+                startArg = 5;
             }
 
             String[] ss = rawTitle.split(" ");
@@ -82,6 +83,8 @@ public class SessionManager
             {
                 title += ss[i] + " ";
             }
+
+            title = title.trim();
 
 
             callback.onResponse(title);
