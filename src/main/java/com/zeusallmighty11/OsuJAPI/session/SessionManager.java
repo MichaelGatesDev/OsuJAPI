@@ -46,7 +46,8 @@ public class SessionManager
 
     public void getCurrentSession(Callback callback)
     {
-        new Thread(() -> {
+        new Thread(() ->
+        {
 
 
             String rawTitle = "";

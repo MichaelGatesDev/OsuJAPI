@@ -61,53 +61,58 @@ public class BeatmapManager
      * @param id       Beatmap Set ID
      * @param key      Osu! API Key
      * @param callback Implementation of the callback interface
+     *
      * @throws com.zeusallmighty11.OsuJAPI.exception.BeatmapNotFoundException If a beatmap is not found
      * @throws com.zeusallmighty11.OsuJAPI.exception.InvalidKeyException      If an API Key is not valid
      */
     public void getBeatmap(final int id, final String key, Callback callback) throws BeatmapNotFoundException, InvalidKeyException
     {
-        try
+        new Thread(() ->
         {
-            URL url = new URL(URL_BEATMAP + "?k=" + key + "&s=" + id);
-
-
-            String response = "Please provide a valid API key.";
-            BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
+            try
             {
-                response = inputLine;
+                URL url = new URL(URL_BEATMAP + "?k=" + key + "&s=" + id);
+
+
+                String response = "Please provide a valid API key.";
+                BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+                String inputLine;
+                while ((inputLine = in.readLine()) != null)
+                {
+                    response = inputLine;
+                }
+
+
+                // if the key was invalid
+                if (response.contains("Please provide a valid API key."))
+                {
+                    // throw invalid key exception
+                    throw new InvalidKeyException(key);
+                }
+
+                // if the user doesn't exist
+                if (response.contains("[]"))
+                {
+                    // throw user not found exception
+                    throw new BeatmapNotFoundException(id);
+                }
+
+                // transform result into object json
+                JSONArray array = new JSONArray(response);
+                JSONObject json = array.getJSONObject(0);
+
+                // parse the beatmap
+                Beatmap beatmap = Beatmap.parse(json);
+
+                // respond with the user
+                callback.onResponse(beatmap);
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
             }
 
-
-            // if the key was invalid
-            if (response.contains("Please provide a valid API key."))
-            {
-                // throw invalid key exception
-                throw new InvalidKeyException(key);
-            }
-
-            // if the user doesn't exist
-            if (response.contains("[]"))
-            {
-                // throw user not found exception
-                throw new BeatmapNotFoundException(id);
-            }
-
-            // transform result into object json
-            JSONArray array = new JSONArray(response);
-            JSONObject json = array.getJSONObject(0);
-
-            // parse the beatmap
-            Beatmap beatmap = Beatmap.parse(json);
-
-            // respond with the user
-            callback.onResponse(beatmap);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        }).start();
     }
 
 
