@@ -62,7 +62,7 @@ public class OsuSkin
 
 
 
-    public static void listAllSkins(File skinsDir, Callback callback)
+    public static void listAllSkins(final File skinsDir, final Callback callback)
     {
         new Thread(new Runnable()
         {

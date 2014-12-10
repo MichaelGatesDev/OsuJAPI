@@ -35,7 +35,16 @@ public class SessionManager
 
     public SessionManager()
     {
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> instance = null));
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable()
+        {
+
+
+            @Override
+            public void run()
+            {
+                instance = null;
+            }
+        }));
     }
 
 
@@ -44,52 +53,54 @@ public class SessionManager
 
 
 
-    public void getCurrentSession(Callback callback)
+    public void getCurrentSession(final Callback callback)
     {
-        new Thread(() ->
+        new Thread(new Runnable()
         {
 
 
-            String rawTitle = "";
-
-
-
-            for (String s : EnumAllWindowNames.getAllWindowNames())
+            @Override
+            public void run()
             {
-                if (s.toLowerCase().startsWith("osu!"))
+                String rawTitle = "";
+
+
+
+                for (String s : EnumAllWindowNames.getAllWindowNames())
                 {
-                    if (!s.contains("broadcaster") && !s.contains("firefox") && !s.contains("twitch"))
+                    if (s.toLowerCase().startsWith("osu!"))
                     {
-                        rawTitle = s;
+                        if (!s.contains("broadcaster") && !s.contains("firefox") && !s.contains("twitch"))
+                        {
+                            rawTitle = s;
+                        }
                     }
                 }
+
+                // return the title
+
+
+                int startArg = 3;
+
+                // if cutting edge build, there is extra thing
+                if (rawTitle.contains("cutting"))
+                {
+                    // not sure
+                    startArg = 5;
+                }
+
+                String[] ss = rawTitle.split(" ");
+                String title = "";
+
+                for (int i = startArg; i < ss.length; i++)
+                {
+                    title += ss[i] + " ";
+                }
+
+                title = title.trim();
+
+                callback.onResponse(title);
             }
-
-            // return the title
-
-
-            int startArg = 3;
-
-            // if cutting edge build, there is extra thing
-            if (rawTitle.contains("cutting"))
-            {
-                // not sure
-                startArg = 5;
-            }
-
-            String[] ss = rawTitle.split(" ");
-            String title = "";
-
-            for (int i = startArg; i < ss.length; i++)
-            {
-                title += ss[i] + " ";
-            }
-
-            title = title.trim();
-
-
-            callback.onResponse(title);
-
         }).start();
     }
 

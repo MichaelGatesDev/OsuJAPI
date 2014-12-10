@@ -46,7 +46,16 @@ public class UserManager
 
     public UserManager()
     {
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> instance = null));
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable()
+        {
+
+
+            @Override
+            public void run()
+            {
+                instance = null;
+            }
+        }));
     }
 
 
@@ -61,6 +70,7 @@ public class UserManager
      * @param username Osu! username
      * @param key      Osu! API Key
      * @param callback Implementation of the callback interface
+     *
      * @throws com.animeniac.OsuJAPI.exception.UserNotFoundException If a user is not found
      * @throws com.animeniac.OsuJAPI.exception.InvalidKeyException   If an API Key is not valid
      */

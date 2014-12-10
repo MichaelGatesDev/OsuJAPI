@@ -18,6 +18,7 @@
 package com.animeniac.OsuJAPI;
 
 
+import com.animeniac.OsuJAPI.async.Callback;
 import com.animeniac.OsuJAPI.session.CurrentSession;
 import com.animeniac.OsuJAPI.session.SessionManager;
 
@@ -52,8 +53,15 @@ public class OsuJAPI
     // STRICTLY FOR DEBUGGING
     public static void main(String[] args)
     {
-        SessionManager.getInstance().getCurrentSession(o -> {
-            System.out.println(o);
+        SessionManager.getInstance().getCurrentSession(new Callback()
+        {
+
+
+            @Override
+            public void onResponse(Object o)
+            {
+                System.out.println(o);
+            }
         });
     }
 
