@@ -72,50 +72,57 @@ public class Beatmap
      *
      * @return parsed beatmap
      */
-    public static void fromID(final int id, final String key, Callback callback)
+    public static void fromID(final int id, final String key, final Callback callback)
     {
-        new Thread(() -> {
-            String response = "";
+        new Thread(new Runnable()
+        {
 
-            try
+
+            @Override
+            public void run()
             {
-                URL link = new URL("https://osu.ppy.sh/api/get_beatmaps?k=" + key + "&s=" + id);
-                BufferedReader in = new BufferedReader(new InputStreamReader(link.openStream()));
-                String inputLine;
-                while ((inputLine = in.readLine()) != null)
+                String response = "";
+
+                try
                 {
-                    response = inputLine;
+                    URL link = new URL("https://osu.ppy.sh/api/get_beatmaps?k=" + key + "&s=" + id);
+                    BufferedReader in = new BufferedReader(new InputStreamReader(link.openStream()));
+                    String inputLine;
+                    while ((inputLine = in.readLine()) != null)
+                    {
+                        response = inputLine;
+                    }
+                    in.close();
+
+                    JSONArray array = new JSONArray(response);
+                    JSONObject json = array.getJSONObject(0);
+
+                    Beatmap beatmap = new Beatmap();
+
+                    beatmap.setStatus(ApprovalStatus.parseStatus(json.getInt("approved")));
+                    beatmap.setArtist(json.getString("artist"));
+                    beatmap.setId(json.getInt("beatmap_id"));
+                    beatmap.setSetId(json.getInt("beatmapset_id"));
+                    beatmap.setBPM(json.getInt("bpm"));
+                    beatmap.setCreator(json.getString("creator"));
+                    beatmap.setDifficultyRating(json.getDouble("difficultyrating"));
+                    beatmap.setCircleSize(json.getInt("diff_size"));
+                    beatmap.setApproachRate(Double.parseDouble(json.getString("diff_approach")));
+                    beatmap.setDrain(json.getInt("diff_drain"));
+                    beatmap.setHitLength(json.getInt("hit_length"));
+                    beatmap.setSource(json.getString("source"));
+                    beatmap.setTitle(json.getString("title"));
+                    beatmap.setLength(json.getInt("total_length"));
+                    beatmap.setVersion(json.getString("version"));
+                    beatmap.setMode(GameMode.parseMode(json.getInt("mode")));
+                    //TODO: date & time
+
+                    callback.onResponse(beatmap);
                 }
-                in.close();
-
-                JSONArray array = new JSONArray(response);
-                JSONObject json = array.getJSONObject(0);
-
-                Beatmap beatmap = new Beatmap();
-
-                beatmap.setStatus(ApprovalStatus.parseStatus(json.getInt("approved")));
-                beatmap.setArtist(json.getString("artist"));
-                beatmap.setId(json.getInt("beatmap_id"));
-                beatmap.setSetId(json.getInt("beatmapset_id"));
-                beatmap.setBPM(json.getInt("bpm"));
-                beatmap.setCreator(json.getString("creator"));
-                beatmap.setDifficultyRating(json.getDouble("difficultyrating"));
-                beatmap.setCircleSize(json.getInt("diff_size"));
-                beatmap.setApproachRate(Double.parseDouble(json.getString("diff_approach")));
-                beatmap.setDrain(json.getInt("diff_drain"));
-                beatmap.setHitLength(json.getInt("hit_length"));
-                beatmap.setSource(json.getString("source"));
-                beatmap.setTitle(json.getString("title"));
-                beatmap.setLength(json.getInt("total_length"));
-                beatmap.setVersion(json.getString("version"));
-                beatmap.setMode(GameMode.parseMode(json.getInt("mode")));
-                //TODO: date & time
-
-                callback.onResponse(beatmap);
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
             }
         }).start();
     }
