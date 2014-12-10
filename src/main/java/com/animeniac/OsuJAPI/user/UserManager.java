@@ -15,12 +15,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.zeusallmighty11.OsuJAPI.user;
+package com.animeniac.OsuJAPI.user;
 
 
-import com.zeusallmighty11.OsuJAPI.async.Callback;
-import com.zeusallmighty11.OsuJAPI.exception.InvalidKeyException;
-import com.zeusallmighty11.OsuJAPI.exception.UserNotFoundException;
+import com.animeniac.OsuJAPI.async.Callback;
+import com.animeniac.OsuJAPI.exception.InvalidKeyException;
+import com.animeniac.OsuJAPI.exception.UserNotFoundException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -61,8 +61,8 @@ public class UserManager
      * @param username Osu! username
      * @param key      Osu! API Key
      * @param callback Implementation of the callback interface
-     * @throws UserNotFoundException If a user is not found
-     * @throws InvalidKeyException   If an API Key is not valid
+     * @throws com.animeniac.OsuJAPI.exception.UserNotFoundException If a user is not found
+     * @throws com.animeniac.OsuJAPI.exception.InvalidKeyException   If an API Key is not valid
      */
     public void getUser(final String username, final String key, Callback callback) throws UserNotFoundException, InvalidKeyException
     {

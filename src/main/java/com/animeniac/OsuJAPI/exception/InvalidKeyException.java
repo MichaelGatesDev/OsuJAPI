@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.zeusallmighty11.OsuJAPI.exception;
+package com.animeniac.OsuJAPI.exception;
 
 
 public class InvalidKeyException extends Exception

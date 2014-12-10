@@ -15,10 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.zeusallmighty11.OsuJAPI.skins;
+package com.animeniac.OsuJAPI.skins;
 
 
-import com.zeusallmighty11.OsuJAPI.async.Callback;
+import com.animeniac.OsuJAPI.async.Callback;
 
 import java.io.File;
 
@@ -64,20 +64,26 @@ public class OsuSkin
 
     public static void listAllSkins(File skinsDir, Callback callback)
     {
-        new Thread(() ->
+        new Thread(new Runnable()
         {
-            StringBuilder sb = new StringBuilder();
 
-            for (File f : skinsDir.listFiles())
+
+            @Override
+            public void run()
             {
-                if (f.isDirectory())
-                {
-                    sb.append(f.getName()).append(" ");
-                }
-            }
+                StringBuilder sb = new StringBuilder();
 
-            callback.onResponse(sb.toString());
-        });
+                for (File f : skinsDir.listFiles())
+                {
+                    if (f.isDirectory())
+                    {
+                        sb.append(f.getName()).append(" ");
+                    }
+                }
+
+                callback.onResponse(sb.toString());
+            }
+        }).start();
     }
 
 

@@ -15,10 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.zeusallmighty11.OsuJAPI.beatmap;
+package com.animeniac.OsuJAPI.beatmap;
 
 
-import com.zeusallmighty11.OsuJAPI.async.Callback;
+import com.animeniac.OsuJAPI.async.Callback;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

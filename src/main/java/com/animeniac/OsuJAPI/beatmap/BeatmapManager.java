@@ -15,12 +15,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.zeusallmighty11.OsuJAPI.beatmap;
+package com.animeniac.OsuJAPI.beatmap;
 
 
-import com.zeusallmighty11.OsuJAPI.async.Callback;
-import com.zeusallmighty11.OsuJAPI.exception.BeatmapNotFoundException;
-import com.zeusallmighty11.OsuJAPI.exception.InvalidKeyException;
+import com.animeniac.OsuJAPI.async.Callback;
+import com.animeniac.OsuJAPI.exception.BeatmapNotFoundException;
+import com.animeniac.OsuJAPI.exception.InvalidKeyException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -62,8 +62,8 @@ public class BeatmapManager
      * @param key      Osu! API Key
      * @param callback Implementation of the callback interface
      *
-     * @throws com.zeusallmighty11.OsuJAPI.exception.BeatmapNotFoundException If a beatmap is not found
-     * @throws com.zeusallmighty11.OsuJAPI.exception.InvalidKeyException      If an API Key is not valid
+     * @throws com.animeniac.OsuJAPI.exception.BeatmapNotFoundException If a beatmap is not found
+     * @throws com.animeniac.OsuJAPI.exception.InvalidKeyException      If an API Key is not valid
      */
     public void getBeatmap(final int id, final String key, Callback callback) throws BeatmapNotFoundException, InvalidKeyException
     {

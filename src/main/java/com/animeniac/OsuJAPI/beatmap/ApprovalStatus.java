@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.zeusallmighty11.OsuJAPI.beatmap;
+package com.animeniac.OsuJAPI.beatmap;
 
 
 public enum ApprovalStatus

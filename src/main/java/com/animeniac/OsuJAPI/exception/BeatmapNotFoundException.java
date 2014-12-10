@@ -15,14 +15,27 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.zeusallmighty11.OsuJAPI.async;
+package com.animeniac.OsuJAPI.exception;
 
 
-public interface Callback
+public class BeatmapNotFoundException extends Exception
 {
 
 
-    public void onResponse(Object o);
+    private static final String message = "Could not find a beatmap by ID '{beatmap}'! Double-check the id and try again?";
+
+
+
+
+    /**
+     * Thrown when a user is not found in the Osu! database.
+     *
+     * @param id ID
+     */
+    public BeatmapNotFoundException(int id)
+    {
+        super(message.replace("{beatmap}", id + ""));
+    }
 
 
 }

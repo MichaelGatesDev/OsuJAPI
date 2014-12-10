@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.zeusallmighty11.OsuJAPI.tools;
+package com.animeniac.OsuJAPI.tools;
 
 
 import com.sun.jna.Native;

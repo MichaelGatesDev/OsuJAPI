@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.zeusallmighty11.OsuJAPI.user;
+package com.animeniac.OsuJAPI.user;
 
 
 import org.json.JSONObject;

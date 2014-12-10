@@ -15,49 +15,27 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.zeusallmighty11.OsuJAPI.beatmap;
+package com.animeniac.OsuJAPI.exception;
 
 
-public enum GameMode
+public class UserNotFoundException extends Exception
 {
-    /**
-     * Osu! mode
-     */
-    OSU,
 
-    /**
-     * Taiko mode
-     */
-    TAIKO,
+
+    private static final String message = "Could not find a user by ID '{username}'! Double-check the spelling and try again?";
+
+
+
 
     /**
-     * Osu! Mania mode
+     * Thrown when a user is not found in the Osu! database.
+     *
+     * @param username Username
      */
-    MANIA,
-
-    /**
-     * Catch the Food mode
-     */
-    FOOD;
-
-
-
-
-    public static GameMode parseMode(int mode)
+    public UserNotFoundException(String username)
     {
-        switch (mode)
-        {
-            case 0:
-                return OSU;
-            case 1:
-                return TAIKO;
-            case 2:
-                return MANIA;
-            case 3:
-                return FOOD;
-            default:
-                return OSU;
-        }
+        super(message.replace("{username}", username));
     }
+
 
 }

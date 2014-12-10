@@ -15,11 +15,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.zeusallmighty11.OsuJAPI.session;
+package com.animeniac.OsuJAPI.session;
 
 
-import com.zeusallmighty11.OsuJAPI.async.Callback;
-import com.zeusallmighty11.OsuJAPI.tools.EnumAllWindowNames;
+import com.animeniac.OsuJAPI.async.Callback;
+import com.animeniac.OsuJAPI.tools.EnumAllWindowNames;
 
 
 public class SessionManager

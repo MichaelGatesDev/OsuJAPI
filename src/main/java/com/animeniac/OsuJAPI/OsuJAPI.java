@@ -15,11 +15,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.zeusallmighty11.OsuJAPI;
+package com.animeniac.OsuJAPI;
 
 
-import com.zeusallmighty11.OsuJAPI.session.CurrentSession;
-import com.zeusallmighty11.OsuJAPI.session.SessionManager;
+import com.animeniac.OsuJAPI.session.CurrentSession;
+import com.animeniac.OsuJAPI.session.SessionManager;
 
 
 public class OsuJAPI
