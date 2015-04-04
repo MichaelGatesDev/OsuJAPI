@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014  ZeusAllMighty11
+ * Copyright (C) Michael Gates (MichaelGatesDev) 2015
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.animeniac.OsuJAPI.tools;
+package com.michaelgatesdev.OsuJAPI.tools;
 
 
 import com.sun.jna.Native;
@@ -30,7 +30,7 @@ public class EnumAllWindowNames
 {
 
 
-    static interface User32 extends StdCallLibrary
+    interface User32 extends StdCallLibrary
     {
 
 

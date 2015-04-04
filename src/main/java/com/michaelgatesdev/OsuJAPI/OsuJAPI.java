@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014  ZeusAllMighty11
+ * Copyright (C) Michael Gates (MichaelGatesDev) 2015
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,12 +15,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.animeniac.OsuJAPI;
+package com.michaelgatesdev.OsuJAPI;
 
 
-import com.animeniac.OsuJAPI.async.Callback;
-import com.animeniac.OsuJAPI.session.CurrentSession;
-import com.animeniac.OsuJAPI.session.SessionManager;
+import com.michaelgatesdev.OsuJAPI.async.Callback;
+import com.michaelgatesdev.OsuJAPI.session.CurrentSession;
+import com.michaelgatesdev.OsuJAPI.session.SessionManager;
 
 
 public class OsuJAPI

@@ -1,5 +1,7 @@
+
+
 /*
- * Copyright (C) 2014  ZeusAllMighty11
+ * Copyright (C) Michael Gates (MichaelGatesDev) 2015
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,12 +17,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.animeniac.OsuJAPI.beatmap;
+package com.michaelgatesdev.OsuJAPI.beatmap;
 
 
-import com.animeniac.OsuJAPI.async.Callback;
-import com.animeniac.OsuJAPI.exception.BeatmapNotFoundException;
-import com.animeniac.OsuJAPI.exception.InvalidKeyException;
+import com.michaelgatesdev.OsuJAPI.async.Callback;
+import com.michaelgatesdev.OsuJAPI.exception.BeatmapNotFoundException;
+import com.michaelgatesdev.OsuJAPI.exception.InvalidKeyException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -71,8 +73,8 @@ public class BeatmapManager
      * @param key      Osu! API Key
      * @param callback Implementation of the callback interface
      *
-     * @throws com.animeniac.OsuJAPI.exception.BeatmapNotFoundException If a beatmap is not found
-     * @throws com.animeniac.OsuJAPI.exception.InvalidKeyException      If an API Key is not valid
+     * @throws BeatmapNotFoundException If a beatmap is not found
+     * @throws InvalidKeyException      If an API Key is not valid
      */
     public void getBeatmap(final int id, final String key, final Callback callback) throws BeatmapNotFoundException, InvalidKeyException
     {

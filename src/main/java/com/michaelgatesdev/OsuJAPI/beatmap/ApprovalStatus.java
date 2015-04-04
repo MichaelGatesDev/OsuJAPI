@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014  ZeusAllMighty11
+ * Copyright (C) Michael Gates (MichaelGatesDev) 2015
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,49 +15,62 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.animeniac.OsuJAPI.beatmap;
+package com.michaelgatesdev.OsuJAPI.beatmap;
 
 
-public enum GameMode
+public enum ApprovalStatus
 {
     /**
-     * Osu! mode
+     * Qualified for ranking
      */
-    OSU,
+    QUALIFIED,
 
     /**
-     * Taiko mode
+     * Approved for ranking
      */
-    TAIKO,
+    APPROVED,
+
 
     /**
-     * Osu! Mania mode
+     * Ranked
      */
-    MANIA,
+    RANKED,
 
     /**
-     * Catch the Food mode
+     * Pending approval
      */
-    FOOD;
+    PENDING,
+
+    /**
+     * Not finished
+     */
+    WIP,
+
+    /**
+     * Dead (no longer played)
+     */
+    GRAVEYARD;
 
 
 
 
-    public static GameMode parseMode(int mode)
+    public static ApprovalStatus parseStatus(int status)
     {
-        switch (mode)
+        switch (status)
         {
-            case 0:
-                return OSU;
-            case 1:
-                return TAIKO;
-            case 2:
-                return MANIA;
             case 3:
-                return FOOD;
-            default:
-                return OSU;
+                return QUALIFIED;
+            case 2:
+                return RANKED;
+            case 1:
+                return RANKED;
+            case 0:
+                return PENDING;
+            case -1:
+                return WIP;
+            case -2:
+                return GRAVEYARD;
         }
+        return null;
     }
-
 }

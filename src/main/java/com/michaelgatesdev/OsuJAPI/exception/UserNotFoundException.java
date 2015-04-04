@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014  ZeusAllMighty11
+ * Copyright (C) Michael Gates (MichaelGatesDev) 2015
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,14 +15,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.animeniac.OsuJAPI.exception;
+package com.michaelgatesdev.OsuJAPI.exception;
 
 
-public class BeatmapNotFoundException extends Exception
+public class UserNotFoundException extends Exception
 {
 
 
-    private static final String message = "Could not find a beatmap by ID '{beatmap}'! Double-check the id and try again?";
+    private static final String message = "Could not find a user by ID '{username}'! Double-check the spelling and try again?";
+    private static final long serialVersionUID = 8295646472426218524L;
 
 
 
@@ -30,11 +31,11 @@ public class BeatmapNotFoundException extends Exception
     /**
      * Thrown when a user is not found in the Osu! database.
      *
-     * @param id ID
+     * @param username Username
      */
-    public BeatmapNotFoundException(int id)
+    public UserNotFoundException(String username)
     {
-        super(message.replace("{beatmap}", id + ""));
+        super(message.replace("{username}", username));
     }
 
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014  ZeusAllMighty11
+ * Copyright (C) Michael Gates (MichaelGatesDev) 2015
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,14 +15,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.animeniac.OsuJAPI.async;
+package com.michaelgatesdev.OsuJAPI.exception;
 
 
-public interface Callback
+public class InvalidKeyException extends Exception
 {
 
 
-    public void onResponse(Object o);
+    private static final String message = "The provided API key is invalid ({key}).";
+    private static final long serialVersionUID = -727663455745163527L;
+
+
+
+
+    /**
+     * Thrown when a key is not found in the Osu! database.
+     *
+     * @param key key
+     */
+    public InvalidKeyException(String key)
+    {
+        super(message.replace("{key}", key));
+    }
 
 
 }

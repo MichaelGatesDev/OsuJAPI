@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014  ZeusAllMighty11
+ * Copyright (C) Michael Gates (MichaelGatesDev) 2015
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,26 +15,27 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.animeniac.OsuJAPI.exception;
+package com.michaelgatesdev.OsuJAPI.exception;
 
 
-public class InvalidKeyException extends Exception
+public class BeatmapNotFoundException extends Exception
 {
 
 
-    private static final String message = "The provided API key is invalid ({key}).";
+    private static final String message = "Could not find a beatmap by ID '{beatmap}'! Double-check the id and try again?";
+    private static final long serialVersionUID = 7429776496262285437L;
 
 
 
 
     /**
-     * Thrown when a key is not found in the Osu! database.
+     * Thrown when a user is not found in the Osu! database.
      *
-     * @param key key
+     * @param id ID
      */
-    public InvalidKeyException(String key)
+    public BeatmapNotFoundException(int id)
     {
-        super(message.replace("{key}", key));
+        super(message.replace("{beatmap}", id + ""));
     }
 
 

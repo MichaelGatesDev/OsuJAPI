@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014  ZeusAllMighty11
+ * Copyright (C) Michael Gates (MichaelGatesDev) 2015
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,12 +15,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.animeniac.OsuJAPI.user;
+package com.michaelgatesdev.OsuJAPI.user;
 
 
-import com.animeniac.OsuJAPI.async.Callback;
-import com.animeniac.OsuJAPI.exception.InvalidKeyException;
-import com.animeniac.OsuJAPI.exception.UserNotFoundException;
+import com.michaelgatesdev.OsuJAPI.async.Callback;
+import com.michaelgatesdev.OsuJAPI.exception.InvalidKeyException;
+import com.michaelgatesdev.OsuJAPI.exception.UserNotFoundException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -71,8 +71,8 @@ public class UserManager
      * @param key      Osu! API Key
      * @param callback Implementation of the callback interface
      *
-     * @throws com.animeniac.OsuJAPI.exception.UserNotFoundException If a user is not found
-     * @throws com.animeniac.OsuJAPI.exception.InvalidKeyException   If an API Key is not valid
+     * @throws UserNotFoundException If a user is not found
+     * @throws InvalidKeyException   If an API Key is not valid
      */
     public void getUser(final String username, final String key, Callback callback) throws UserNotFoundException, InvalidKeyException
     {
